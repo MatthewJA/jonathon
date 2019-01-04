@@ -3,7 +3,6 @@
 import flask
 from flask import request
 
-from app import bens_global_state
 
 def webhook_push():
     data = request.data
@@ -15,3 +14,6 @@ def webhook_push():
         bens_global_state['pushes'].append(push)
     else:
         bens_global_state['pushes'] = [push]
+
+
+from app import bens_global_state

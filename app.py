@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-from . import watchathon
+import watchathon
 
 app = Flask(__name__)
 
