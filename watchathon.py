@@ -3,7 +3,7 @@
 import flask
 from flask import request
 
-bens_global_state = {}
+from db import store, query
 
 
 def webhook_push():
@@ -12,9 +12,6 @@ def webhook_push():
         'author': data['pusher']['name'],
         'time': data['repository']['pushed_at'],
     }
-    if 'pushes' in bens_global_state:
-        bens_global_state['pushes'].append(push)
-    else:
-        bens_global_state['pushes'] = [push]
-    return 'changed ben\'s global state: added ' + repr(
-        bens_global_state['pushes'][-1])
+    pushes = query('pushes')
+    pushes.append(push)
+    store('pushes', pushes)
