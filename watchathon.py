@@ -3,6 +3,8 @@
 import flask
 from flask import request
 
+bens_global_state = {}
+
 
 def webhook_push():
     data = request.data
