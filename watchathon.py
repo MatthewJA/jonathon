@@ -16,3 +16,5 @@ def webhook_push():
         bens_global_state['pushes'].append(push)
     else:
         bens_global_state['pushes'] = [push]
+    return 'changed ben\'s global state: added ' + repr(
+        bens_global_state['pushes'][-1])
