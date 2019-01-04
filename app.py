@@ -1,5 +1,7 @@
 from flask import Flask, request
 
+from . import watchathon
+
 app = Flask(__name__)
 
 bens_global_state = {}
@@ -12,6 +14,9 @@ def recent_pushes():
         out += ('<li>{} @ {}</li>'.format(push['author'], push['time']))
     out += '</ul>'
     return out
+
+
+app.route('/push_hook')(watchathon.webhook_push)
 
 
 if __name__ == '__main__':
