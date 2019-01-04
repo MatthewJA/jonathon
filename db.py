@@ -7,7 +7,7 @@ db = redis.from_url(os.environ.get('REDIS_URL'))
 
 
 def query(key):
-    return json.loads(db.get(key))
+    return json.loads(db.get(key) or '[]')
 
 
 def store(key, value):
