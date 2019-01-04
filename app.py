@@ -13,7 +13,7 @@ def recent_pushes():
     return out
 
 
-push_hook = app.route('/push_hook', method='POST')(watchathon.webhook_push)
+push_hook = app.route('/push_hook', methods=['POST'])(watchathon.webhook_push)
 
 
 if __name__ == '__main__':
