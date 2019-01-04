@@ -10,7 +10,7 @@ def webhook_push():
     data = request.json
     push = {
         'author': data['pusher']['name'],
-        'time': data['pushed_at'],
+        'time': data['repository']['pushed_at'],
     }
     if 'pushes' in bens_global_state:
         bens_global_state['pushes'].append(push)
