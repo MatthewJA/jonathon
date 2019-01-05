@@ -17,7 +17,12 @@ def recent_pushes():
 
 
 push_hook = app.route('/push_hook', methods=['POST'])(watchathon.webhook_push)
-clear_db = app.route('/clear_all')(clear_all)
+
+app.route('/clear_all')
+def clear_db():
+    clear_all()
+    return 'Cleared'
+
 
 if __name__ == '__main__':
     app.run(debug=True)
