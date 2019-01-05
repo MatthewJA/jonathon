@@ -11,4 +11,8 @@ def query(key):
 
 
 def store(key, value):
-    db.append(key, json.dumps(value))
+    db.set(key, json.dumps(value))
+
+
+def clear_all():
+    db.flushdb()

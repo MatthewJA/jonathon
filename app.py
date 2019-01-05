@@ -1,7 +1,7 @@
 from flask import Flask, request
 
 import watchathon
-from db import query
+from db import query, clear_all
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ def recent_pushes():
 
 
 push_hook = app.route('/push_hook', methods=['POST'])(watchathon.webhook_push)
-
+clear_db = app.route('/clear_all')(clear_all)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
