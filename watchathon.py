@@ -15,3 +15,4 @@ def webhook_push():
     pushes = query('pushes')
     pushes.append(push)
     store('pushes', pushes)
+    return 'ok'
