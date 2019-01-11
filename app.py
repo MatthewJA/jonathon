@@ -1,34 +1,8 @@
-from flask import Flask, request, jsonify
+"""Watches git repositories for breakages."""
 
-import db
+REPO_SSH = 'git@github.com:ncss/projects-2019-2d.git'
+BRANCH = 'dev'
 
-
-app = Flask(__name__)
-
-@app.route('/usegit', methods=['POST'])
-def slack_use_git():
-    return 'yeah'
-
-@app.route('/pushes', methods=['POST'])
-def slack_pushes():
-    return ','.join([i['author'] for i in db.query('pushes')])
-
-@app.route('/push', methods=['POST'])
-def github_push():
-    data = request.json
-    push = {
-        'author': data['pusher']['name'],
-        'time': data['repository']['pushed_at'],
-        'time': data['repository']['pushed_at'],
-    }
-
-    # Store the push in the push log.
-    pushes = query('pushes')
-    pushes.append(push)
-    store('pushes', pushes)
-
-    return 'ok' + repr(result)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+def try_the_repo(repo_ssh=REPO_SSH, branch=BRANCH):
+    # Clone the repo.
+    pass
